@@ -1,4 +1,4 @@
-let line = new Array();
+let lines = new Array();
 
 function stopPainting() {
   painting = false;
@@ -17,22 +17,22 @@ function onMouseMove(event) {
     if (!painting) {
       ctx.beginPath();
       ctx.moveTo(x, y);
-      line = [];
+      lines = [];
     } else {
       ctx.lineTo(x, y);
       ctx.stroke();
-      line.push({ x, y });
+      lines.push({ x, y });
     }
   }
 }
 
 function onMouseUp(event) {
   history.push({
-    line,
-    color: ctx.strokeStyle,
     filling,
+    lines,
+    color: ctx.strokeStyle,
+    lineWidth: ctx.lineWidth,
   });
-  console.log(history);
   painting = false;
 }
 

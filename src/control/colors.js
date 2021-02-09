@@ -6,7 +6,7 @@ Array.from(colors)[0].style.borderRadius = HIGHLIGHT_COLOR_RADIUS;
 
 //색깔 변경
 function handleColorClick(event) {
-  const color = event.target.style.backgroundColor;
+  color = event.target.style.backgroundColor;
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
 

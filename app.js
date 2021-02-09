@@ -1,6 +1,12 @@
 const canvas = document.getElementById('jsCanvas');
 const ctx = canvas.getContext('2d');
 
+let history = new Array();
+// let redo = new Array();
+
+let painting = false;
+let filling = false;
+
 const CANVAS_SIZE = 700;
 const INITIAL_COLOR = '#2c2c2c';
 
@@ -12,12 +18,14 @@ canvas.height = CANVAS_SIZE;
 
 ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+history.push({
+  filling: true,
+  color: ctx.fillStyle,
+});
 
-ctx.strokeStyle = INITIAL_COLOR;
-ctx.fillStyle = INITIAL_COLOR;
-ctx.lineWidth = 2.5;
+let color = INITIAL_COLOR;
+let lineWidth = 5.0;
 
-let painting = false;
-let filling = false;
-
-let history = new Array();
+ctx.strokeStyle = color;
+ctx.fillStyle = color;
+ctx.lineWidth = lineWidth;
