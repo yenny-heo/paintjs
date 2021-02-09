@@ -1,16 +1,16 @@
 const undo = document.getElementById('undo');
 
-function buttonDisabled(id) {
+buttonDisabled = (id) => {
   id.style.color = 'rgba(0, 0, 0, 0.3)';
   id.style.transform = 'none';
   id.style.cursor = 'not-allowed';
-}
+};
 
-function buttonActive(id) {
+buttonActive = (id) => {
   id.style.color = 'rgba(0, 0, 0, 0.8)';
   id.style.transform = 'scale(0.98)';
   id.style.cursor = 'pointer';
-}
+};
 
 function handleUndoClick(event) {
   if (history.length > 1) {
@@ -37,7 +37,6 @@ function handleUndoClick(event) {
     if (history.length <= 1) {
       buttonDisabled(undo);
     }
-    console.log(history);
   }
 }
 
