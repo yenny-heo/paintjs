@@ -8,6 +8,9 @@ const save = document.getElementById('jsSave');
 const CANVAS_SIZE = 700;
 const INITIAL_COLOR = '#2c2c2c';
 
+const HIGHLIGHT_COLOR_SIZE = '70px';
+const HIGHLIGHT_COLOR_RADIUS = '35px';
+
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 
@@ -17,6 +20,10 @@ ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 ctx.strokeStyle = INITIAL_COLOR;
 ctx.fillStyle = INITIAL_COLOR;
 ctx.lineWidth = 2.5;
+
+Array.from(colors)[0].style.width = HIGHLIGHT_COLOR_SIZE;
+Array.from(colors)[0].style.height = HIGHLIGHT_COLOR_SIZE;
+Array.from(colors)[0].style.borderRadius = HIGHLIGHT_COLOR_RADIUS;
 
 let painting = false;
 let filling = false;
@@ -65,6 +72,15 @@ function handleColorClick(event) {
   const color = event.target.style.backgroundColor;
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
+
+  Array.from(colors).forEach((color) => {
+    color.style.width = '50px';
+    color.style.height = '50px';
+    color.style.borderRadius = '25px';
+  });
+  event.target.style.width = HIGHLIGHT_COLOR_SIZE;
+  event.target.style.height = HIGHLIGHT_COLOR_SIZE;
+  event.target.style.borderRadius = HIGHLIGHT_COLOR_RADIUS;
 }
 
 Array.from(colors).forEach((color) =>
