@@ -1,5 +1,17 @@
 const undo = document.getElementById('undo');
 
+function buttonDisabled(id) {
+  id.style.color = 'rgba(0, 0, 0, 0.3)';
+  id.style.transform = 'none';
+  id.style.cursor = 'not-allowed';
+}
+
+function buttonActive(id) {
+  id.style.color = 'rgba(0, 0, 0, 0.8)';
+  id.style.transform = 'scale(0.98)';
+  id.style.cursor = 'pointer';
+}
+
 function handleUndoClick(event) {
   if (history.length > 1) {
     history.pop();
@@ -21,9 +33,17 @@ function handleUndoClick(event) {
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
     ctx.lineWidth = lineWidth;
+
+    if (history.length <= 1) {
+      buttonDisabled(undo);
+    }
+    console.log(history);
   }
 }
 
 if (undo) {
   undo.addEventListener('click', handleUndoClick);
+  if (history.length <= 1) {
+    buttonDisabled(undo);
+  }
 }

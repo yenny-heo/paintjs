@@ -33,6 +33,9 @@ function onMouseUp(event) {
     color: ctx.strokeStyle,
     lineWidth: ctx.lineWidth,
   });
+  if (history.length > 1) {
+    buttonActive(undo);
+  }
   painting = false;
 }
 
