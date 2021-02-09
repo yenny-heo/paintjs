@@ -41,10 +41,10 @@ function onMouseMove(event) {
   }
 }
 
-function handleCanvasClick() {
+function onMouseDown(event) {
   if (filling) {
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-  }
+  } else startPainting();
 }
 
 //우클릭 메뉴 안뜨게
@@ -54,10 +54,9 @@ function handleCM(event) {
 
 if (canvas) {
   canvas.addEventListener('mousemove', onMouseMove);
-  canvas.addEventListener('mousedown', startPainting);
+  canvas.addEventListener('mousedown', onMouseDown);
   canvas.addEventListener('mouseup', stopPainting);
   canvas.addEventListener('mouseleave', stopPainting);
-  canvas.addEventListener('click', handleCanvasClick);
   canvas.addEventListener('contextmenu', handleCM);
 }
 
@@ -73,7 +72,6 @@ Array.from(colors).forEach((color) =>
 );
 
 //브러쉬 크기 변경
-
 function handleRangeChange(event) {
   const size = event.target.value;
   ctx.lineWidth = size;
@@ -99,7 +97,6 @@ if (mode) {
 }
 
 //image save
-
 function handleSaveClick() {
   const image = canvas.toDataURL('image/png');
   const link = document.createElement('a');

@@ -61,5 +61,13 @@ body{
 }
 
 .controls .controls__range{
+    display: flex;
     margin-bottom: 30px;
+    font-weight: 500;
+    font-size: 15px;
+    color:grey
+}
+
+.controls__range .range__title{
+    margin-right: 10px;
 }
