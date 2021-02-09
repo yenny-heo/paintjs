@@ -23,17 +23,18 @@ function handleUndoClick(event) {
         ctx.strokeStyle = one.color;
         ctx.lineWidth = one.lineWidth;
         ctx.beginPath();
-        ctx.moveTo(one.lines[0].x, one.lines[0].y);
-        one.lines.forEach((line) => {
-          ctx.lineTo(line.x, line.y);
-          ctx.stroke();
-        });
+        if (one.lines.length > 0) {
+          ctx.moveTo(one.lines[0].x, one.lines[0].y);
+          one.lines.forEach((line) => {
+            ctx.lineTo(line.x, line.y);
+            ctx.stroke();
+          });
+        }
       }
     });
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
     ctx.lineWidth = lineWidth;
-
     if (history.length <= 1) {
       buttonDisabled(undo);
     }
