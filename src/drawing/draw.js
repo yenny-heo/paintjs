@@ -1,12 +1,13 @@
 let lines = new Array();
 
-function stopPainting() {
-  painting = false;
-}
-
 function onMouseDown(event) {
+  //채우기
   if (filling) {
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    history.push({
+      filling,
+      color: ctx.strokeStyle,
+    });
   } else painting = true;
 }
 
@@ -27,7 +28,7 @@ function onMouseMove(event) {
 }
 
 function stopPainting(event) {
-  if (lines.length > 0) {
+  if (painting && lines.length > 0) {
     history.push({
       filling,
       lines,
@@ -35,6 +36,7 @@ function stopPainting(event) {
       lineWidth: ctx.lineWidth,
     });
   }
+
   if (history.length > 1) {
     buttonActive(undo);
   }

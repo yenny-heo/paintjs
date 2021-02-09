@@ -2,7 +2,6 @@ const canvas = document.getElementById('jsCanvas');
 const ctx = canvas.getContext('2d');
 
 let history = new Array();
-// let redo = new Array();
 
 let painting = false;
 let filling = false;
