@@ -26,13 +26,15 @@ function onMouseMove(event) {
   }
 }
 
-function onMouseUp(event) {
-  history.push({
-    filling,
-    lines,
-    color: ctx.strokeStyle,
-    lineWidth: ctx.lineWidth,
-  });
+function stopPainting(event) {
+  if (lines.length > 0) {
+    history.push({
+      filling,
+      lines,
+      color: ctx.strokeStyle,
+      lineWidth: ctx.lineWidth,
+    });
+  }
   if (history.length > 1) {
     buttonActive(undo);
   }
@@ -47,7 +49,7 @@ function handleCM(event) {
 if (canvas) {
   canvas.addEventListener('mousemove', onMouseMove);
   canvas.addEventListener('mousedown', onMouseDown);
-  canvas.addEventListener('mouseup', onMouseUp);
+  canvas.addEventListener('mouseup', stopPainting);
   canvas.addEventListener('mouseleave', stopPainting);
   canvas.addEventListener('contextmenu', handleCM);
 }

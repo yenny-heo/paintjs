@@ -13,6 +13,7 @@ buttonActive = (id) => {
 };
 
 function handleUndoClick(event) {
+  console.log(history);
   if (history.length > 1) {
     history.pop();
     history.forEach((one) => {
