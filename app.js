@@ -101,10 +101,10 @@ if (range) {
 function handleModeClick(event) {
   if (filling === true) {
     filling = false;
-    mode.innerText = '🖌 PAINT';
+    mode.innerText = 'PAINT';
   } else {
     filling = true;
-    mode.innerText = '🎨 FILL';
+    mode.innerText = 'FILL';
   }
 }
 
