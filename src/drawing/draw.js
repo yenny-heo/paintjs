@@ -1,9 +1,9 @@
 let lines = new Array();
 
 function onMouseDown(event) {
-  //채우기
   if (filling) {
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    //filling 기록
     history.push({
       filling,
       color: ctx.strokeStyle,
@@ -29,6 +29,7 @@ function onMouseMove(event) {
 
 function stopPainting(event) {
   if (painting && lines.length > 0) {
+    //paint 기록
     history.push({
       filling,
       lines,
